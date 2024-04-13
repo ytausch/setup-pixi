@@ -261,6 +261,7 @@ jobs:
         if: matrix.os == 'windows-latest'
       - run: |
           echo "Path: $PATH"
+        shell: bash
       - name: Verify pixi version (before setup-pixi)
         run: |
           pixi --version
