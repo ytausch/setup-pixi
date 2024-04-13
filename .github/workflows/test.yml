@@ -263,9 +263,8 @@ jobs:
       - uses: ./
         with:
           cache: false
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
       - run: |
+          set -x
           set -o pipefail
           pixi --version | grep -q "pixi 0.14.0"
           which pixi | grep -q ~/custom-existing-pixi/pixi
