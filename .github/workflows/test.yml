@@ -259,23 +259,23 @@ jobs:
         run: |
           curl -L --output $HOME/custom-existing-pixi/pixi.exe https://github.com/prefix-dev/pixi/releases/download/v0.14.0/pixi-x86_64-pc-windows-msvc.exe
         if: matrix.os == 'windows-latest'
-      - name: Verify pixi binary (before setup-pixi)
+      - name: Verify pixi version (before setup-pixi)
         run: |
-          set -x
-          set -o pipefail
           pixi --version
           pixi --version | grep -q "pixi 0.14.0"
-          which pixi | grep -q custom-existing-pixi/pixi
+      - name: Verify pixi path (before setup-pixi)
+        run: |
+          which pixi | grep -q $HOME/custom-existing-pixi/pixi
       - uses: ./
         with:
           cache: false
-      - name: Verify pixi binary (after setup-pixi)
+      - name: Verify pixi version (before setup-pixi)
         run: |
-          set -x
-          set -o pipefail
           pixi --version
           pixi --version | grep -q "pixi 0.14.0"
-          which pixi | grep -q custom-existing-pixi/pixi
+      - name: Verify pixi path (before setup-pixi)
+        run: |
+          which pixi | grep -q $HOME/custom-existing-pixi/pixi
 
   dont-use-existing-pixi-bin:
     strategy:
@@ -302,8 +302,9 @@ jobs:
       - uses: ./
         with:
           pixi-version: v0.15.1
-      - run: |
-          set -o pipefail
+      - name: Verify pixi version (after setup-pixi)
+        run: |
+          pixi --version
           pixi --version | grep -q "pixi 0.15.1"
 
   auth-token:
