@@ -259,9 +259,9 @@ jobs:
         run: |
           curl -L --output $HOME/custom-existing-pixi/pixi.exe https://github.com/prefix-dev/pixi/releases/download/v0.14.0/pixi-x86_64-pc-windows-msvc.exe
         if: matrix.os == 'windows-latest'
+      - run: echo $PATH
       - name: Verify pixi version (before setup-pixi)
         run: |
-          echo $PATH
           pixi --version
           pixi --version | grep -q "pixi 0.14.0"
       - name: Verify pixi path (before setup-pixi)
