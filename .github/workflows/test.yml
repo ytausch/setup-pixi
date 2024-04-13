@@ -260,10 +260,18 @@ jobs:
         run: |
           curl -L --output ~/custom-existing-pixi/pixi.exe https://github.com/prefix-dev/pixi/releases/download/v0.14.0/pixi-x86_64-pc-windows-msvc.exe
         if: matrix.os == 'windows-latest'
+      - name: Verify pixi binary (before setup-pixi)
+        run: |
+          set -x
+          set -o pipefail
+          pixi --version
+          pixi --version | grep -q "pixi 0.14.0"
+          which pixi | grep -q ~/custom-existing-pixi/pixi
       - uses: ./
         with:
           cache: false
-      - run: |
+      - name: Verify pixi binary (after setup-pixi)
+        run: |
           set -x
           set -o pipefail
           pixi --version
