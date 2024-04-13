@@ -266,6 +266,7 @@ jobs:
       - run: |
           set -x
           set -o pipefail
+          pixi --version
           pixi --version | grep -q "pixi 0.14.0"
           which pixi | grep -q ~/custom-existing-pixi/pixi
 
