@@ -163,6 +163,8 @@ const validateInputs = (inputs: Inputs): void => {
 const determinePixiInstallation = (pixiUrlOrVersionSet: boolean, pixiBinPath: string | undefined) => {
   const preinstalledPixi = which.sync('pixi', { nothrow: true })
 
+  core.debug(`preinstalledPixi: ${preinstalledPixi}`)
+
   if (pixiUrlOrVersionSet || pixiBinPath) {
     if (preinstalledPixi) {
       core.debug(`Local pixi found at ${preinstalledPixi} is being ignored.`)
