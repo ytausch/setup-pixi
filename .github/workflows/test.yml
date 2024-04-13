@@ -261,6 +261,7 @@ jobs:
         if: matrix.os == 'windows-latest'
       - name: Verify pixi version (before setup-pixi)
         run: |
+          echo $PATH
           pixi --version
           pixi --version | grep -q "pixi 0.14.0"
       - name: Verify pixi path (before setup-pixi)
@@ -269,11 +270,11 @@ jobs:
       - uses: ./
         with:
           cache: false
-      - name: Verify pixi version (before setup-pixi)
+      - name: Verify pixi version (after setup-pixi)
         run: |
           pixi --version
           pixi --version | grep -q "pixi 0.14.0"
-      - name: Verify pixi path (before setup-pixi)
+      - name: Verify pixi path (after setup-pixi)
         run: |
           which pixi | grep -q $HOME/custom-existing-pixi/pixi
 
