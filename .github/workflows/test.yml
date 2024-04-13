@@ -277,9 +277,11 @@ jobs:
         run: |
           pixi --version
           pixi --version | grep -q "pixi 0.14.0"
+        shell: bash
       - name: Verify pixi path (after setup-pixi)
         run: |
           which pixi | grep -q $HOME/custom-existing-pixi/pixi
+        shell: bash
 
   dont-use-existing-pixi-bin:
     strategy:
