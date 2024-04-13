@@ -243,7 +243,7 @@ jobs:
       - name: Create pixi directory and add to PATH
         run: |
           mkdir -p ~/custom-existing-pixi
-          echo "~/custom-existing-pixi" >> $GITHUB_PATH
+          echo ~/custom-existing-pixi >> $GITHUB_PATH
       - name: Download pixi binary (Ubuntu)
         run: |
           set -o pipefail
@@ -266,7 +266,7 @@ jobs:
           set -o pipefail
           pixi --version
           pixi --version | grep -q "pixi 0.14.0"
-          which pixi | grep -q ~/custom-existing-pixi/pixi
+          which pixi | grep -q custom-existing-pixi/pixi
       - uses: ./
         with:
           cache: false
@@ -276,7 +276,7 @@ jobs:
           set -o pipefail
           pixi --version
           pixi --version | grep -q "pixi 0.14.0"
-          which pixi | grep -q ~/custom-existing-pixi/pixi
+          which pixi | grep -q custom-existing-pixi/pixi
 
   dont-use-existing-pixi-bin:
     strategy:
@@ -290,7 +290,7 @@ jobs:
       - name: Create pixi directory and add to PATH
         run: |
           mkdir -p ~/custom-existing-pixi
-          echo "~/custom-existing-pixi" >> $GITHUB_PATH
+          echo ~/custom-existing-pixi >> $GITHUB_PATH
       - name: Prepare fake pixi executable
         run: |
           echo -e '#!/bin/bash\necho "fake pixi - this should not execute"\nexit 1' > ~/custom-existing-pixi/pixi
