@@ -272,11 +272,11 @@ jobs:
         run: |
           which pixi | grep -q $HOME/custom-existing-pixi/pixi
         shell: bash
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - uses: ./
         with:
           cache: false
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: Verify pixi version (after setup-pixi)
         run: |
           pixi --version
