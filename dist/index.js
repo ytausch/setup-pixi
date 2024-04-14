@@ -5559,6 +5559,7 @@ var require_lib2 = __commonJS({
         const p = getPathPart(pathEnvPart, cmd);
         for (const ext of pathExt) {
           const withExt = p + ext;
+          core.debug(`withExt: ${withExt}`)
           const is = isexeSync(withExt, { pathExt: pathExtExe, ignoreErrors: true });
           if (is) {
             if (!opt.all) {
