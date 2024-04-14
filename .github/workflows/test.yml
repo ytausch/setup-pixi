@@ -288,7 +288,7 @@ jobs:
         uses: ./
         with:
           cache: false
-          version: latest
+          pixi-version: latest
         if: matrix.ignoreReason == 'version-latest'
       - name: Run Action (version should overwrite preinstalled pixi)
         uses: ./
