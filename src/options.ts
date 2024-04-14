@@ -161,9 +161,13 @@ const validateInputs = (inputs: Inputs): void => {
 }
 
 const determinePixiInstallation = (pixiUrlOrVersionSet: boolean, pixiBinPath: string | undefined) => {
-  const preinstalledPixi = which.sync('pixi', { nothrow: true })
+  const preinstalledPixiUnix = which.sync('pixi', { nothrow: true })
+  const preinstalledPixiWindows = which.sync('pixi.exe', { nothrow: true })
 
-  core.debug(`preinstalledPixi: ${preinstalledPixi}`)
+  core.debug(`preinstalledPixiUnix: ${preinstalledPixiUnix}`)
+  core.debug(`preinstalledPixiWindows: ${preinstalledPixiWindows}`)
+
+  const preinstalledPixi = preinstalledPixiUnix || preinstalledPixiWindows
 
   if (pixiUrlOrVersionSet || pixiBinPath) {
     if (preinstalledPixi) {
