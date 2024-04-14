@@ -294,7 +294,7 @@ jobs:
         uses: ./
         with:
           cache: false
-          version: v0.16.0
+          pixi-version: v0.16.0
         if: matrix.ignoreReason == 'version'
       - name: Run Action (url should overwrite preinstalled pixi)
         uses: ./
