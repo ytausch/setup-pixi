@@ -275,6 +275,8 @@ jobs:
       - uses: ./
         with:
           cache: false
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
       - name: Verify pixi version (after setup-pixi)
         run: |
           pixi --version
