@@ -6175,8 +6175,11 @@ var validateInputs = (inputs) => {
   }
 };
 var determinePixiInstallation = (pixiUrlOrVersionSet, pixiBinPath) => {
-  const preinstalledPixi = import_which.default.sync("pixi", { nothrow: true });
-  core.debug(`preinstalledPixi: ${preinstalledPixi}`);
+  const preinstalledPixiUnix = import_which.default.sync("pixi", { nothrow: true });
+  const preinstalledPixiWindows = import_which.default.sync("pixi.exe", { nothrow: true });
+  core.debug(`preinstalledPixiUnix: ${preinstalledPixiUnix}`);
+  core.debug(`preinstalledPixiWindows: ${preinstalledPixiWindows}`);
+  const preinstalledPixi = preinstalledPixiUnix || preinstalledPixiWindows;
   if (pixiUrlOrVersionSet || pixiBinPath) {
     if (preinstalledPixi) {
       core.debug(`Local pixi found at ${preinstalledPixi} is being ignored.`);
