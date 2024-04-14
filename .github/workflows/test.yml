@@ -243,6 +243,7 @@ jobs:
         run: |
           mkdir -p $HOME/custom-existing-pixi
           echo $HOME/custom-existing-pixi >> $GITHUB_PATH
+        shell: bash
       - name: Download pixi binary (Ubuntu)
         run: |
           set -o pipefail
