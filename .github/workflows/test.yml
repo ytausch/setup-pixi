@@ -275,8 +275,8 @@ jobs:
       - uses: ./
         with:
           cache: false
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Verify pixi version (after setup-pixi)
         run: |
           pixi --version
